@@ -8,6 +8,8 @@ class SettingPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("設定"),
+        elevation: 0,
+        backgroundColor: Colors.transparent,
       ),
       body: Container(),
     );

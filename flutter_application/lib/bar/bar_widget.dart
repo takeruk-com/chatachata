@@ -30,11 +30,11 @@ class _BarWidgetState extends State<BarWidget> {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            label: 'Home',
+            label: 'ホーム',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.search),
-            label: 'Search',
+            label: '検索',
           ),
         ],
         currentIndex: _selectedIndex,

@@ -12,9 +12,37 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData.light(),
-      darkTheme: ThemeData.dark(),
-      themeMode: ThemeMode.dark,
+      theme: ThemeData(
+        brightness: Brightness.light,
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.white,
+          titleTextStyle: TextStyle(color: Colors.black, fontSize: 20),
+          iconTheme: IconThemeData(color: Colors.black),
+        ),
+        textSelectionTheme:
+            const TextSelectionThemeData(cursorColor: Colors.black),
+        inputDecorationTheme: const InputDecorationTheme(
+          prefixIconColor: Colors.black54,
+          suffixIconColor: Colors.black54,
+        ),
+        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+          backgroundColor: Colors.white,
+          selectedItemColor: Colors.black,
+        ),
+      ),
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+        appBarTheme: const AppBarTheme(backgroundColor: Colors.black),
+        textSelectionTheme:
+            const TextSelectionThemeData(cursorColor: Colors.white),
+        inputDecorationTheme: const InputDecorationTheme(
+          prefixIconColor: Colors.white70,
+          suffixIconColor: Colors.white70,
+        ),
+        bottomNavigationBarTheme:
+            const BottomNavigationBarThemeData(backgroundColor: Colors.black),
+      ),
+      themeMode: ThemeMode.light,
       home: const BarWidget(),
     );
   }

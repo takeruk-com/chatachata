@@ -14,7 +14,6 @@ class _NotificationPageState extends State<NotificationPage> {
       appBar: AppBar(
         title: const Text("通知"),
         elevation: 0,
-        backgroundColor: Colors.transparent,
       ),
       body: Container(),
     );

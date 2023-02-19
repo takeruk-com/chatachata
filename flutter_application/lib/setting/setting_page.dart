@@ -9,7 +9,6 @@ class SettingPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text("設定"),
         elevation: 0,
-        backgroundColor: Colors.transparent,
       ),
       body: Container(),
     );

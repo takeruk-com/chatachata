@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application/model/topic_model.dart';
 import 'package:flutter_application/notification/notification_page.dart';
 import 'package:flutter_application/setting/setting_page.dart';
-import 'package:flutter_application/widget/topic_list_tile_widget.dart';
+import 'package:flutter_application/topic/topic_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -14,6 +15,8 @@ class _HomePageState extends State<HomePage> {
   final TextEditingController _textEditingController =
       TextEditingController(text: "");
   bool _searchBoolean = false;
+
+  final topic = TopicListModel().topics;
 
   @override
   Widget build(BuildContext context) {
@@ -124,17 +127,27 @@ class _HomePageState extends State<HomePage> {
               ? SliverList(
                   delegate: SliverChildBuilderDelegate(
                     (context, index) {
-                      return const TopicListTileWidget();
+                      return ListTile(
+                        title: Text(topic[index].title),
+                        subtitle: const Text("サブタイトル"),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const TopicPage()),
+                          );
+                        },
+                      );
                     },
-                    childCount: 2,
+                    childCount: topic.length,
                   ),
                 )
               : SliverList(
                   delegate: SliverChildBuilderDelegate(
                     (context, index) {
-                      return const TopicListTileWidget();
+                      return const Text("マイトピックを検索");
                     },
-                    childCount: 0,
+                    childCount: 1,
                   ),
                 )
         ],

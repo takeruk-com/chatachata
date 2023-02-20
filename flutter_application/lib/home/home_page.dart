@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application/notification/notification_page.dart';
 import 'package:flutter_application/setting/setting_page.dart';
+import 'package:flutter_application/widget/topic_list_tile_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -119,19 +120,25 @@ class _HomePageState extends State<HomePage> {
             titleSpacing: 0,
             elevation: 0,
           ),
-          SliverToBoxAdapter(
-            child: !_searchBoolean ? myTopic() : searchMyTopic(),
-          ),
+          !_searchBoolean
+              ? SliverList(
+                  delegate: SliverChildBuilderDelegate(
+                    (context, index) {
+                      return const TopicListTileWidget();
+                    },
+                    childCount: 2,
+                  ),
+                )
+              : SliverList(
+                  delegate: SliverChildBuilderDelegate(
+                    (context, index) {
+                      return const TopicListTileWidget();
+                    },
+                    childCount: 0,
+                  ),
+                )
         ],
       ),
     );
   }
-}
-
-Widget myTopic() {
-  return const Center(child: Text('Index 0: Home'));
-}
-
-Widget searchMyTopic() {
-  return const Center(child: Text('マイトピックを検索'));
 }

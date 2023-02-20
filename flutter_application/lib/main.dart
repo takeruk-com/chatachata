@@ -25,6 +25,10 @@ class MyApp extends StatelessWidget {
           prefixIconColor: Colors.black54,
           suffixIconColor: Colors.black54,
         ),
+        floatingActionButtonTheme: const FloatingActionButtonThemeData(
+          backgroundColor: Colors.black,
+          elevation: 0,
+        ),
         bottomNavigationBarTheme: const BottomNavigationBarThemeData(
           backgroundColor: Colors.white,
           selectedItemColor: Colors.black,
@@ -39,6 +43,8 @@ class MyApp extends StatelessWidget {
           prefixIconColor: Colors.white70,
           suffixIconColor: Colors.white70,
         ),
+        floatingActionButtonTheme:
+            const FloatingActionButtonThemeData(elevation: 0),
         bottomNavigationBarTheme:
             const BottomNavigationBarThemeData(backgroundColor: Colors.black),
       ),

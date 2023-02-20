@@ -37,6 +37,7 @@ class MyApp extends StatelessWidget {
       darkTheme: ThemeData(
         brightness: Brightness.dark,
         appBarTheme: const AppBarTheme(backgroundColor: Colors.black),
+        scaffoldBackgroundColor: Colors.black,
         textSelectionTheme:
             const TextSelectionThemeData(cursorColor: Colors.white),
         inputDecorationTheme: const InputDecorationTheme(

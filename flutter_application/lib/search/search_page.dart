@@ -79,6 +79,7 @@ class _SearchPageState extends State<SearchPage> {
                   padding: const EdgeInsets.only(right: 8, left: 8),
                   child: TextButton(
                     onPressed: () {
+                      _textEditingController.clear();
                       FocusScope.of(context).unfocus();
                       _searchBoolean = false;
                     },

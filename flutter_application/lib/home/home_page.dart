@@ -95,6 +95,7 @@ class _HomePageState extends State<HomePage> {
                   padding: const EdgeInsets.only(right: 8, left: 8),
                   child: TextButton(
                     onPressed: () {
+                      _textEditingController.clear();
                       FocusScope.of(context).unfocus();
                       _searchBoolean = false;
                     },
@@ -119,12 +120,18 @@ class _HomePageState extends State<HomePage> {
             elevation: 0,
           ),
           SliverToBoxAdapter(
-            child: !_searchBoolean
-                ? const Center(child: Text('Index 0: Home'))
-                : const Center(child: Text('マイトピックを検索')),
+            child: !_searchBoolean ? myTopic() : searchMyTopic(),
           ),
         ],
       ),
     );
   }
+}
+
+Widget myTopic() {
+  return const Center(child: Text('Index 0: Home'));
+}
+
+Widget searchMyTopic() {
+  return const Center(child: Text('マイトピックを検索'));
 }

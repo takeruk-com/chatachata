@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application/home/home_page.dart';
-import 'package:flutter_application/search/search_page.dart';
+import 'package:flutter_application/page/home_page.dart';
+import 'package:flutter_application/page/search_page.dart';
 
-class BarWidget extends StatefulWidget {
-  const BarWidget({Key? key}) : super(key: key);
+class RootPage extends StatefulWidget {
+  const RootPage({Key? key}) : super(key: key);
 
   @override
-  State<BarWidget> createState() => _BarWidgetState();
+  State<RootPage> createState() => _RootPageState();
 }
 
-class _BarWidgetState extends State<BarWidget> {
+class _RootPageState extends State<RootPage> {
   int _selectedIndex = 0;
   static const List<Widget> _widgetOptions = <Widget>[
     HomePage(),

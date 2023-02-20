@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application/bar/bar_widget.dart';
+import 'package:flutter_application/page/root_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
             const BottomNavigationBarThemeData(backgroundColor: Colors.black),
       ),
       themeMode: ThemeMode.light,
-      home: const BarWidget(),
+      home: const RootPage(),
     );
   }
 }

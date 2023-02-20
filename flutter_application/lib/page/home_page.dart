@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application/filter/filter_page.dart';
+import 'package:flutter_application/model/topic_model.dart';
+import 'package:flutter_application/page/notification_page.dart';
+import 'package:flutter_application/page/setting_page.dart';
+import 'package:flutter_application/page/topic_page.dart';
 
-class SearchPage extends StatefulWidget {
-  const SearchPage({Key? key}) : super(key: key);
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
 
   @override
-  State<SearchPage> createState() => _SearchPageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _SearchPageState extends State<SearchPage> {
+class _HomePageState extends State<HomePage> {
   final TextEditingController _textEditingController =
       TextEditingController(text: "");
   bool _searchBoolean = false;
+
+  final topic = TopicListModel().topics;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +34,7 @@ class _SearchPageState extends State<SearchPage> {
                 },
                 controller: _textEditingController,
                 decoration: InputDecoration(
-                  hintText: "トピックを検索",
+                  hintText: "マイトピックを検索",
                   prefixIcon: const Icon(
                     Icons.search,
                   ),
@@ -57,6 +62,21 @@ class _SearchPageState extends State<SearchPage> {
             actions: [
               Visibility(
                 visible: !_searchBoolean,
+                child: IconButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const NotificationPage()),
+                    );
+                  },
+                  icon: const Icon(Icons.notifications),
+                  splashColor: Colors.transparent,
+                  splashRadius: 20,
+                ),
+              ),
+              Visibility(
+                visible: !_searchBoolean,
                 child: Padding(
                   padding: const EdgeInsets.only(right: 8),
                   child: IconButton(
@@ -64,10 +84,10 @@ class _SearchPageState extends State<SearchPage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const FilterPage()),
+                            builder: (context) => const SettingPage()),
                       );
                     },
-                    icon: const Icon(Icons.sort),
+                    icon: const Icon(Icons.settings),
                     splashColor: Colors.transparent,
                     splashRadius: 20,
                   ),
@@ -103,12 +123,38 @@ class _SearchPageState extends State<SearchPage> {
             titleSpacing: 0,
             elevation: 0,
           ),
-          SliverToBoxAdapter(
-            child: !_searchBoolean
-                ? const Center(child: Text('Index 1: Search'))
-                : const Center(child: Text('トピックを検索')),
-          ),
+          !_searchBoolean
+              ? SliverList(
+                  delegate: SliverChildBuilderDelegate(
+                    (context, index) {
+                      return ListTile(
+                        title: Text(topic[index].title),
+                        subtitle: const Text("サブタイトル"),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const TopicPage()),
+                          );
+                        },
+                      );
+                    },
+                    childCount: topic.length,
+                  ),
+                )
+              : SliverList(
+                  delegate: SliverChildBuilderDelegate(
+                    (context, index) {
+                      return const Text("マイトピックを検索");
+                    },
+                    childCount: 1,
+                  ),
+                )
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: const Icon(Icons.add),
       ),
     );
   }
